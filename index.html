@@ -129,6 +129,13 @@
 </head>
 <body>
 
+<!-- ─── NAV ─── -->
+<nav class="nav-strip">
+  <button class="nav-btn" onclick="goTo('ciudades',this)">Ciudades</button>
+  <button class="nav-btn" onclick="goTo('reservas',this)">Reservas</button>
+  <button class="nav-btn" onclick="goTo('balance',this)">Balance</button>
+</nav>
+
 <!-- ─── HERO ─── -->
 <div class="hero" id="inicio">
   <div class="star-field" id="stars"></div>
@@ -142,127 +149,99 @@
       <div><div class="stat-n">18</div><div class="stat-l">Días</div></div>
       <div><div class="stat-n">8</div><div class="stat-l">Ciudades</div></div>
     </div>
+
+    <!-- TIMELINE HORIZONTAL -->
+    <div style="margin-top:3rem;overflow-x:auto;padding-bottom:0.5rem">
+      <div style="display:flex;align-items:flex-start;gap:0;min-width:600px;position:relative">
+
+        <!-- line -->
+        <div style="position:absolute;top:18px;left:20px;right:20px;height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.2));z-index:0"></div>
+
+        <style>
+          .tl-stop{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;z-index:1;cursor:default}
+          .tl-stop-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);margin-bottom:8px;flex-shrink:0}
+          .tl-stop-dot.mx{background:rgba(255,255,255,0.3);border-color:var(--navy)}
+          .tl-stop-date{font-size:9px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;text-align:center}
+          .tl-stop-city{font-size:12px;color:#fff;font-weight:500;text-align:center;line-height:1.3}
+          .tl-stop-icon{font-size:14px;margin-bottom:4px}
+        </style>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🇲🇽</div>
+          <div class="tl-stop-dot mx"></div>
+          <div class="tl-stop-date">11 sep</div>
+          <div class="tl-stop-city" style="color:rgba(255,255,255,0.45)">Partida CDMX</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🗼</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">12–14 sep</div>
+          <div class="tl-stop-city">París</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🛶</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">14–16 sep</div>
+          <div class="tl-stop-city">Venecia</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🌸</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">16 sep</div>
+          <div class="tl-stop-city">Florencia</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🏛️</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">16–20 sep</div>
+          <div class="tl-stop-city">Roma</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🏰</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">20–22 sep</div>
+          <div class="tl-stop-city">Budapest</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🏰</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">23–24 sep</div>
+          <div class="tl-stop-city">Praga</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🍺</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">24–26 sep</div>
+          <div class="tl-stop-city">Bruselas</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🌷</div>
+          <div class="tl-stop-dot"></div>
+          <div class="tl-stop-date">26–28 sep</div>
+          <div class="tl-stop-city">Ámsterdam</div>
+        </div>
+
+        <div class="tl-stop">
+          <div class="tl-stop-icon">🇲🇽</div>
+          <div class="tl-stop-dot mx"></div>
+          <div class="tl-stop-date">28 sep</div>
+          <div class="tl-stop-city" style="color:rgba(255,255,255,0.45)">Regreso MX</div>
+        </div>
+
+      </div>
+    </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>Explorar</div>
 </div>
 
-<!-- ─── NAV ─── -->
-<nav class="nav-strip">
-  <button class="nav-btn active" onclick="goTo('reservas',this)">Reservas</button>
-  <button class="nav-btn" onclick="goTo('ciudades',this)">Ciudades</button>
-  <button class="nav-btn" onclick="goTo('balance',this)">Balance</button>
-  <button class="nav-btn" onclick="goTo('pendientes',this)">Pendientes</button>
-</nav>
-
-<!-- ─── RESERVAS ─── -->
-<div id="reservas">
-  <div class="section" style="padding-bottom:2rem">
-    <div class="section-label">Todo confirmado</div>
-    <h2 class="section-title">Reservas</h2>
-  </div>
-  <div style="max-width:1100px;margin:0 auto;padding:0 3rem 5rem">
-    <div class="reservas-grid">
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel Le Relais Saint Charles · París</div><div class="res-time">12 sep → 14 sep · Desayuno incluido</div></div></div>
-        <div class="res-amount">$17,022 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo París → Venecia · AF1326</div><div class="res-time">14 sep 20:30 → 22:10</div></div></div>
-        <div class="res-amount">$8,684 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Venice Maggior Consiglio · Venecia</div><div class="res-time">14 sep noche → 16 sep</div></div></div>
-        <div class="res-amount">$17,758 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Venecia → Florencia · Ref. 2242668</div><div class="res-time">16 sep 07:26 → 09:39</div></div></div>
-        <div class="res-amount">EUR 126.25</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Florencia → Roma · Ref. 2242683</div><div class="res-time">16 sep 20:48 → 22:25 · 1h 37m</div></div></div>
-        <div class="res-amount">EUR 109.27</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Barberini Retreat Boutique · Roma</div><div class="res-time">16 sep → 20 sep · 4 noches · 2 habitaciones · Desayuno</div></div></div>
-        <div class="res-amount">$33,646 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo Roma → Budapest · W62340</div><div class="res-time">20 sep 08:35 → 10:25</div></div></div>
-        <div class="res-amount">$6,172 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏠</span><div><div class="res-name">Airbnb · Apartment in Budapest · Hosted by Mimi</div><div class="res-time">20 sep → 22 sep · Check-in 15:00 · Check-out 10:00 · 4 huéspedes · Károly körút 5, Budapest 1075</div></div></div>
-        <div class="res-amount">$8,420 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Budapest → Praga · EuroNight 10476 · Jonathan (Ref. 584521893849)</div><div class="res-time">22 sep 19:30 → 23 sep 08:23 · Vagón 365, Literas 31 y 35</div></div></div>
-        <div class="res-amount">$3,402 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Budapest → Praga · EuroNight 10476 · Ruth (Ref. 586521893878)</div><div class="res-time">22 sep 19:30 → 23 sep 08:23 · Vagón 365, Literas 22 y 26</div></div></div>
-        <div class="res-amount">$3,780 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel MOODs Charles Bridge · Praga</div><div class="res-time">23 sep → 24 sep · 2 habitaciones · Desayuno · Naprstkova 6, Prague 11000</div></div></div>
-        <div class="res-amount">$6,974 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo Praga → Bruselas · SN2810 Brussels Airlines</div><div class="res-time">24 sep 11:50 → 13:20 · Václav Havel Airport T2 → Brussels Airport</div></div></div>
-        <div class="res-amount">$7,475 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel ibis Brussels off Grand'Place</div><div class="res-time">24 sep → 26 sep · 2 noches · 2 habitaciones · Desayuno · Grasmarkt 100, Bruselas</div></div></div>
-        <div class="res-amount">$15,177 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Bruselas → Ámsterdam · Eurocity Direct · DNR CDFPWLJ · Tren 9539</div><div class="res-time">26 sep 10:57 · Bruxelles-Midi → Amsterdam Zuid · 4 personas</div></div></div>
-        <div class="res-amount">$3,210 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-      <div class="reserva-row">
-        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel ibis Styles Amsterdam Central Station</div><div class="res-time">26 sep → 28 sep · 2 noches · 2 habitaciones · Desayuno · Martelaarsgracht 10, Ámsterdam</div></div></div>
-        <div class="res-amount">$24,240 MXN</div>
-        <span class="badge ok">✓ Confirmado</span>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="total-strip">
-    <div><div class="total-label">Total viaje completo</div><div class="total-val">$161,112 MXN</div></div>
-    <div><div class="total-label">Por persona (parte igual)</div><div class="total-val">$40,278 MXN</div></div>
-    <div><div class="total-label">Ciudades</div><div class="total-val">7</div></div>
-    <div><div class="total-label">Fechas</div><div class="total-val">11–28 sep</div></div>
-  </div>
-</div>
 
 <!-- ─── CIUDADES ─── -->
 <div id="ciudades">
@@ -527,6 +506,116 @@
   </div>
 </div>
 
+<!-- ─── RESERVAS ─── -->
+<div id="reservas">
+  <div class="section" style="padding-bottom:2rem">
+    <div class="section-label">Todo confirmado</div>
+    <h2 class="section-title">Reservas</h2>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 3rem 5rem">
+    <div class="reservas-grid">
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel Le Relais Saint Charles · París</div><div class="res-time">12 sep → 14 sep · Desayuno incluido</div></div></div>
+        <div class="res-amount">$17,022 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo París → Venecia · AF1326</div><div class="res-time">14 sep 20:30 → 22:10</div></div></div>
+        <div class="res-amount">$8,684 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Venice Maggior Consiglio · Venecia</div><div class="res-time">14 sep noche → 16 sep</div></div></div>
+        <div class="res-amount">$17,758 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Venecia → Florencia · Ref. 2242668</div><div class="res-time">16 sep 07:26 → 09:39</div></div></div>
+        <div class="res-amount">EUR 126.25</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Florencia → Roma · Ref. 2242683</div><div class="res-time">16 sep 20:48 → 22:25 · 1h 37m</div></div></div>
+        <div class="res-amount">EUR 109.27</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Barberini Retreat Boutique · Roma</div><div class="res-time">16 sep → 20 sep · 4 noches · 2 habitaciones · Desayuno</div></div></div>
+        <div class="res-amount">$33,646 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo Roma → Budapest · W62340</div><div class="res-time">20 sep 08:35 → 10:25</div></div></div>
+        <div class="res-amount">$6,172 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏠</span><div><div class="res-name">Airbnb · Apartment in Budapest · Hosted by Mimi</div><div class="res-time">20 sep → 22 sep · Check-in 15:00 · Check-out 10:00 · 4 huéspedes · Károly körút 5, Budapest 1075</div></div></div>
+        <div class="res-amount">$8,420 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Budapest → Praga · EuroNight 10476 · Jonathan (Ref. 584521893849)</div><div class="res-time">22 sep 19:30 → 23 sep 08:23 · Vagón 365, Literas 31 y 35</div></div></div>
+        <div class="res-amount">$3,402 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Budapest → Praga · EuroNight 10476 · Ruth (Ref. 586521893878)</div><div class="res-time">22 sep 19:30 → 23 sep 08:23 · Vagón 365, Literas 22 y 26</div></div></div>
+        <div class="res-amount">$3,780 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel MOODs Charles Bridge · Praga</div><div class="res-time">23 sep → 24 sep · 2 habitaciones · Desayuno · Naprstkova 6, Prague 11000</div></div></div>
+        <div class="res-amount">$6,974 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo Praga → Bruselas · SN2810 Brussels Airlines</div><div class="res-time">24 sep 11:50 → 13:20 · Václav Havel Airport T2 → Brussels Airport</div></div></div>
+        <div class="res-amount">$7,475 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel ibis Brussels off Grand'Place</div><div class="res-time">24 sep → 26 sep · 2 noches · 2 habitaciones · Desayuno · Grasmarkt 100, Bruselas</div></div></div>
+        <div class="res-amount">$15,177 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Bruselas → Ámsterdam · Eurocity Direct · DNR CDFPWLJ · Tren 9539</div><div class="res-time">26 sep 10:57 · Bruxelles-Midi → Amsterdam Zuid · 4 personas</div></div></div>
+        <div class="res-amount">$3,210 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel ibis Styles Amsterdam Central Station</div><div class="res-time">26 sep → 28 sep · 2 noches · 2 habitaciones · Desayuno · Martelaarsgracht 10, Ámsterdam</div></div></div>
+        <div class="res-amount">$24,240 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="total-strip">
+    <div><div class="total-label">Total viaje completo</div><div class="total-val">$161,112 MXN</div></div>
+    <div><div class="total-label">Por persona (parte igual)</div><div class="total-val">$40,278 MXN</div></div>
+    <div><div class="total-label">Ciudades</div><div class="total-val">7</div></div>
+    <div><div class="total-label">Fechas</div><div class="total-val">11–28 sep</div></div>
+  </div>
+</div>
+
 <!-- ─── BALANCE ─── -->
 <div id="balance">
   <div class="section">
@@ -663,107 +752,6 @@
 
   </div>
 </div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$50,669</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">Hotel París · Hotel Roma</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$10,391 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px">
-        <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Ruth</div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$51,952</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">Hotel Venecia · Trenes IT · Vuelo BUD · Airbnb Budapest · Tren BUD-PRG · Hotel Praga · Vuelo PRG-BRU</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$11,674 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px">
-        <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Alan</div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$58,492</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">Vuelo PAR-VCE · Trenes BUD-PRG (x2) · Hotel Bruselas · Tren BRU-AMS · Hotel Ámsterdam</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$18,214 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px">
-        <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jorge</div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$0</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3)">Sin pagos registrados</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#f87171;font-weight:500">−$40,278 MXN</div>
-          <div style="font-size:11px;color:rgba(248,113,113,0.6)">debe pagar</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Resumen total -->
-    <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;border-radius:4px;display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Total viaje</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$161,112 MXN</div></div>
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Por persona (parte igual)</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$40,278 MXN</div></div>
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Viajeros</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">4</div></div>
-    </div>
-
-    <!-- Transferencias para quedar flat -->
-    <div style="margin-bottom:1rem">
-      <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem">Para quedar flat — solo Jorge paga</div>
-      <div style="display:grid;gap:0.75rem;max-width:600px">
-
-        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Jonathan</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$10,391 MXN</div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$11,674 MXN</div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Alan</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$18,214 MXN</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div style="margin-top:2rem;background:rgba(255,255,255,0.02);border-left:2px solid rgba(201,168,76,0.4);padding:1rem 1.5rem;border-radius:0 4px 4px 0;max-width:600px">
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7">Viaje completo cerrado: París · Venecia · Florencia · Roma · Budapest · Praga · Bruselas · Ámsterdam. Jorge es el único que debe transferir — $40,278 MXN en total distribuidos en 3 pagos.</div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ─── PENDIENTES ─── -->
-<div id="pendientes">
-  <div class="section">
-    <div class="section-label">Siguiente versión</div>
-    <h2 class="section-title">Pendientes</h2>
-    <div class="pending-section" style="border-color:rgba(201,168,76,0.2);background:rgba(201,168,76,0.04)">
-      <div class="pending-item" style="border-color:rgba(255,255,255,0.05)">
-        <div class="pending-num" style="color:rgba(201,168,76,0.4)">✓</div>
-        <div><div class="pending-name" style="color:rgba(255,255,255,0.6)">Viaje completo confirmado</div><div class="pending-desc">París · Venecia · Florencia · Roma · Budapest · Praga · Bruselas · Ámsterdam. Todas las reservas están registradas. Solo falta que Jorge realice sus 3 transferencias para cerrar el balance.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer>Europa 2026 &nbsp;·&nbsp; Itinerario operativo premium &nbsp;·&nbsp; Versión corte 20 sep</footer>
 
@@ -803,17 +791,19 @@
   }
 
   // Active nav on scroll
-  const sections = ['reservas','ciudades','balance','pendientes'];
-  window.addEventListener('scroll', () => {
-    let current = 'reservas';
+  const sections = ['ciudades','reservas','balance'];
+  function updateNav() {
+    let current = null;
     sections.forEach(id => {
       const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
     });
     document.querySelectorAll('.nav-btn').forEach((b, i) => {
       b.classList.toggle('active', sections[i] === current);
     });
-  });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
 </script>
 </body>
 </html>
