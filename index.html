@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europa 2026 · Itinerario Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --gold:#C9A84C;--navy:#0D1B2A;--cream:#F5F0E8;--mid:#1B2D42;
+    --font-display:'Playfair Display',Georgia,serif;
+    --font-body:'Inter',system-ui,sans-serif;
+  }
+  body{font-family:var(--font-body);background:var(--navy);color:#fff;overflow-x:hidden}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;background:var(--navy);display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 4rem 0;overflow:hidden}
+  .star-field{position:absolute;inset:0;overflow:hidden}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite alternate}
+  @keyframes twinkle{0%{opacity:0.1}100%{opacity:0.9}}
+  .city-pills{display:flex;gap:1rem;padding:0 3rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .pill{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:11px;letter-spacing:3px;padding:6px 16px;border-radius:20px;text-transform:uppercase;font-family:var(--font-body)}
+  .hero-content{padding:0 3rem}
+  .hero-eyebrow{font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+  .hero-title{font-family:var(--font-display);font-size:clamp(64px,10vw,120px);line-height:0.9;color:#fff;margin-bottom:1.5rem}
+  .hero-title span{color:var(--gold);display:block;font-style:italic}
+  .hero-sub{font-size:16px;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:3rem;max-width:500px;line-height:1.7}
+  .hero-stats{display:flex;gap:3rem;flex-wrap:wrap}
+  .stat-n{font-family:var(--font-display);font-size:48px;color:var(--gold);line-height:1}
+  .stat-l{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-top:4px}
+  .scroll-hint{position:absolute;bottom:2rem;right:3rem;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase}
+  .scroll-line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+
+  /* NAV */
+  .nav-strip{position:sticky;top:0;z-index:100;background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;gap:0;overflow-x:auto}
+  .nav-btn{padding:16px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);cursor:pointer;white-space:nowrap;border:none;background:none;transition:all 0.3s;border-bottom:2px solid transparent;font-family:var(--font-body)}
+  .nav-btn:hover,.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* SECTIONS */
+  .section{padding:5rem 3rem;max-width:1100px;margin:0 auto}
+  .section-label{font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem}
+  .section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);color:#fff;line-height:1.1;margin-bottom:3rem}
+
+  /* RESERVAS */
+  .reservas-grid{display:grid;gap:2px}
+  .reserva-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:rgba(255,255,255,0.03);transition:background 0.2s;border-left:2px solid transparent}
+  .reserva-row:hover{background:rgba(201,168,76,0.06);border-left-color:var(--gold)}
+  .reserva-row.pendiente{border-left-color:rgba(192,57,43,0.6)}
+  .res-icon{font-size:20px;margin-right:12px}
+  .res-main{display:flex;align-items:center}
+  .res-name{font-size:15px;color:#fff}
+  .res-time{font-size:12px;color:rgba(255,255,255,0.35);margin-top:2px}
+  .res-amount{font-size:13px;color:var(--gold);text-align:right;white-space:nowrap}
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+  .badge.ok{background:rgba(30,126,82,0.2);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+  .badge.pend{background:rgba(192,57,43,0.2);color:#f87171;border:1px solid rgba(248,113,113,0.2)}
+
+  /* CITIES */
+  .cities-nav{display:flex;gap:1rem;margin-bottom:4rem;flex-wrap:wrap}
+  .city-tab{padding:10px 24px;border:1px solid rgba(255,255,255,0.1);border-radius:30px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.3s;background:none;font-family:var(--font-body)}
+  .city-tab:hover{border-color:var(--gold);color:var(--gold)}
+  .city-tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:500}
+  .city-panel{display:none}
+  .city-panel.active{display:block}
+  .city-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+  @media(max-width:768px){
+    .city-layout{grid-template-columns:1fr}
+    .reserva-row{grid-template-columns:1fr;gap:0.5rem}
+    .hero-stats{gap:2rem}
+    .section{padding:3rem 1.5rem}
+    .hero-content{padding:0 1.5rem}
+    .city-pills{padding:0 1.5rem}
+    .total-strip{padding:2rem 1.5rem;flex-direction:column;gap:1.5rem}
+  }
+  .city-name-big{font-family:var(--font-display);font-size:clamp(60px,8vw,100px);color:rgba(255,255,255,0.06);line-height:1;margin-bottom:-0.5rem;user-select:none}
+  .city-hotel-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);padding:2rem;border-radius:4px;margin-bottom:1.5rem}
+  .hotel-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem}
+  .hotel-name{font-family:var(--font-display);font-size:22px;color:#fff;margin-bottom:0.25rem}
+  .hotel-addr{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:1rem}
+  .hotel-dates{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .date-label{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase}
+  .date-val{font-size:16px;color:var(--gold);font-family:var(--font-display)}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:1.5rem}
+  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold),rgba(201,168,76,0.1))}
+  .tl-item{position:relative;margin-bottom:2rem}
+  .tl-dot{position:absolute;left:-1.5rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateX(-3px)}
+  .tl-time{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+  .tl-label{font-size:16px;color:#fff;margin-bottom:4px}
+  .tl-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6}
+
+  /* ALERTS */
+  .alert-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);padding:1.25rem 1.5rem;border-radius:4px;margin-top:1.5rem}
+  .alert-box.danger{background:rgba(192,57,43,0.08);border-color:rgba(192,57,43,0.3)}
+  .alert-icon{font-size:16px;margin-right:8px}
+  .alert-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+  .city-right-label{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase;margin-bottom:1.5rem}
+
+  /* PENDIENTES */
+  .pending-section{background:rgba(192,57,43,0.05);border:1px solid rgba(192,57,43,0.2);padding:3rem;border-radius:4px;max-width:700px}
+  .pending-item{display:flex;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .pending-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .pending-num{font-family:var(--font-display);font-size:32px;color:rgba(192,57,43,0.3);width:40px;flex-shrink:0}
+  .pending-name{font-size:16px;color:#fff;margin-bottom:4px}
+  .pending-desc{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6}
+
+  /* TOTALS */
+  .total-strip{background:rgba(201,168,76,0.08);border-top:1px solid rgba(201,168,76,0.2);border-bottom:1px solid rgba(201,168,76,0.2);padding:2rem 3rem;display:flex;gap:3rem;align-items:center;flex-wrap:wrap}
+  .total-label{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px}
+  .total-val{font-family:var(--font-display);font-size:24px;color:var(--gold)}
+
+  /* FLORENCIA CARDS */
+  .flor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  .flor-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.5rem;border-radius:4px;border-left:2px solid var(--gold)}
+  .flor-time{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+  .flor-title{font-size:18px;color:#fff;margin-bottom:6px}
+  .flor-desc{font-size:13px;color:rgba(255,255,255,0.4)}
+
+  /* BUDAPEST OPTS */
+  .bud-opt{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.5rem;border-radius:4px;margin-bottom:1rem}
+  .bud-opt-name{font-size:14px;color:#fff;font-weight:500;margin-bottom:6px}
+  .bud-opt-desc{font-size:13px;color:rgba(255,255,255,0.4)}
+
+  footer{padding:3rem;text-align:center;font-size:12px;color:rgba(255,255,255,0.15);letter-spacing:1px;border-top:1px solid rgba(255,255,255,0.05)}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div class="hero" id="inicio">
+  <div class="star-field" id="stars"></div>
+  <div class="city-pills">
+    <span class="pill">París</span>
+    <span class="pill">Venecia</span>
+    <span class="pill">Florencia</span>
+    <span class="pill">Roma</span>
+    <span class="pill">Budapest</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Itinerario operativo premium</div>
+    <h1 class="hero-title">Europa<span>2026</span></h1>
+    <p class="hero-sub">11 – 20 septiembre · Tramo confirmado hasta Budapest · Todo lo que necesitas para que el viaje funcione de verdad.</p>
+    <div class="hero-stats">
+      <div><div class="stat-n">4</div><div class="stat-l">Viajeros</div></div>
+      <div><div class="stat-n">8</div><div class="stat-l">Reservas</div></div>
+      <div><div class="stat-n">9</div><div class="stat-l">Días</div></div>
+      <div><div class="stat-n">5</div><div class="stat-l">Ciudades</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Explorar</div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav class="nav-strip">
+  <button class="nav-btn active" onclick="goTo('reservas',this)">Reservas</button>
+  <button class="nav-btn" onclick="goTo('ciudades',this)">Ciudades</button>
+  <button class="nav-btn" onclick="goTo('pendientes',this)">Pendientes</button>
+</nav>
+
+<!-- ─── RESERVAS ─── -->
+<div id="reservas">
+  <div class="section" style="padding-bottom:2rem">
+    <div class="section-label">Todo confirmado</div>
+    <h2 class="section-title">Reservas</h2>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 3rem 5rem">
+    <div class="reservas-grid">
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo CDMX → París (CDG)</div><div class="res-time">11 sep 17:05 → 12 sep 12:10</div></div></div>
+        <div class="res-amount">$17,022 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Hotel Le Relais Saint Charles · París</div><div class="res-time">12 sep → 14 sep · Desayuno incluido</div></div></div>
+        <div class="res-amount">$17,022 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo París → Venecia · AF1326</div><div class="res-time">14 sep 20:30 → 22:10</div></div></div>
+        <div class="res-amount">$8,684 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Venice Maggior Consiglio · Venecia</div><div class="res-time">14 sep noche → 16 sep</div></div></div>
+        <div class="res-amount">$17,758 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Venecia → Florencia · Ref. 2242668</div><div class="res-time">16 sep 07:26 → 09:39</div></div></div>
+        <div class="res-amount">EUR 126.25</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🚄</span><div><div class="res-name">Tren Florencia → Roma · Ref. 2242683</div><div class="res-time">16 sep 20:48 → 22:25 · 1h 37m</div></div></div>
+        <div class="res-amount">EUR 109.27</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name">Barberini Retreat Boutique · Roma</div><div class="res-time">16 sep → 20 sep · 4 noches · 2 habitaciones · Desayuno</div></div></div>
+        <div class="res-amount">$33,646 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row">
+        <div class="res-main"><span class="res-icon">✈️</span><div><div class="res-name">Vuelo Roma → Budapest · W62340</div><div class="res-time">20 sep 08:35 → 10:25</div></div></div>
+        <div class="res-amount">$6,172 MXN</div>
+        <span class="badge ok">✓ Confirmado</span>
+      </div>
+
+      <div class="reserva-row pendiente">
+        <div class="res-main"><span class="res-icon">🏨</span><div><div class="res-name" style="color:rgba(255,255,255,0.4);font-style:italic">Hotel Budapest · Por definir</div><div class="res-time">Nombre, fechas y precio pendientes</div></div></div>
+        <div class="res-amount" style="color:rgba(255,255,255,0.2)">—</div>
+        <span class="badge pend">⚠ Pendiente</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="total-strip">
+    <div><div class="total-label">Total en MXN (confirmado)</div><div class="total-val">$100,304 MXN</div></div>
+    <div><div class="total-label">Total en EUR (trenes)</div><div class="total-val">EUR 235.52</div></div>
+    <div><div class="total-label">Corte de versión</div><div class="total-val">20 sep</div></div>
+  </div>
+</div>
+
+<!-- ─── CIUDADES ─── -->
+<div id="ciudades">
+  <div class="section">
+    <div class="section-label">Ciudad por ciudad</div>
+    <h2 class="section-title">El recorrido</h2>
+
+    <div class="cities-nav">
+      <button class="city-tab active" onclick="showCity('paris',this)">París</button>
+      <button class="city-tab" onclick="showCity('venecia',this)">Venecia</button>
+      <button class="city-tab" onclick="showCity('florencia',this)">Florencia</button>
+      <button class="city-tab" onclick="showCity('roma',this)">Roma</button>
+      <button class="city-tab" onclick="showCity('budapest',this)">Budapest</button>
+    </div>
+
+    <!-- PARIS -->
+    <div id="city-paris" class="city-panel active">
+      <div class="city-layout">
+        <div>
+          <div class="city-name-big">París</div>
+          <div class="city-hotel-card">
+            <div class="hotel-label">Hotel</div>
+            <div class="hotel-name">Hôtel Le Relais Saint Charles</div>
+            <div class="hotel-addr">72 boulevard de Grenelle, 75015 Paris<br>Zona Dupleix · Metro línea 6</div>
+            <div class="hotel-dates">
+              <div><div class="date-label">Check-in</div><div class="date-val">12 sep</div></div>
+              <div><div class="date-label">Check-out</div><div class="date-val">14 sep 12:00</div></div>
+              <div><div class="date-label">Noches</div><div class="date-val">2</div></div>
+            </div>
+          </div>
+          <div class="alert-box">
+            <span class="alert-icon">💡</span>
+            <span class="alert-text">Aquí sí conviene transporte público: RER B + Metro L6 hasta Dupleix. Simple, eficiente y evita un taxi caro desde CDG.</span>
+          </div>
+        </div>
+        <div>
+          <div class="city-right-label">Timing operativo</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep 12:10</div><div class="tl-label">Llegada CDG</div><div class="tl-desc">45–75 min para migración, maletas y salida del aeropuerto. Llegada estimada al hotel: 14:30–15:00</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep tarde</div><div class="tl-label">Primer día</div><div class="tl-desc">5–6 horas útiles después de dejar maletas</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13 sep</div><div class="tl-label">Día completo</div><div class="tl-desc">10–12 horas disponibles</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 17:30</div><div class="tl-label">Salir del hotel</div><div class="tl-desc">Inicio del trayecto hacia CDG</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 18:30</div><div class="tl-label">En CDG</div><div class="tl-desc">Mínimo 2 horas antes. Vuelo AF1326 sale a las 20:30</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VENECIA -->
+    <div id="city-venecia" class="city-panel">
+      <div class="city-layout">
+        <div>
+          <div class="city-name-big">Venecia</div>
+          <div class="city-hotel-card">
+            <div class="hotel-label">Hotel</div>
+            <div class="hotel-name">Venice Maggior Consiglio</div>
+            <div class="hotel-addr">Calle Priuli dei Cavaletti 73/74, Cannaregio<br>Muy cerca de Venezia Santa Lucia</div>
+            <div class="hotel-dates">
+              <div><div class="date-label">Check-in</div><div class="date-val">14 sep noche</div></div>
+              <div><div class="date-label">Check-out</div><div class="date-val">16 sep</div></div>
+              <div><div class="date-label">Noches</div><div class="date-val">2</div></div>
+            </div>
+          </div>
+          <div class="alert-box danger">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">Llegada tardía: revisar el último servicio de Bus ATVO ese día. Plan B: taxi acuático si se complica el último tramo.</span>
+          </div>
+        </div>
+        <div>
+          <div class="city-right-label">Timing operativo</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 22:10</div><div class="tl-label">Llegada VCE</div><div class="tl-desc">Salida real del aeropuerto: 22:40–23:00. Bus ATVO a Piazzale Roma + caminata al hotel</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep</div><div class="tl-label">Tiempo útil</div><div class="tl-desc">Prácticamente nulo — día de llegada nocturna</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15 sep</div><div class="tl-label">Día completo</div><div class="tl-desc">10–12 horas reales para la ciudad</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16 sep 06:30</div><div class="tl-label">Salir del hotel</div><div class="tl-desc">Hacia Venezia Santa Lucia. Objetivo: estar en estación a las 06:45</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16 sep 07:26</div><div class="tl-label">Tren a Florencia</div><div class="tl-desc">Ref. 2242668 · Llega Firenze SMN 09:39</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLORENCIA -->
+    <div id="city-florencia" class="city-panel">
+      <div style="margin-bottom:2rem">
+        <div class="city-name-big">Florencia</div>
+        <div style="display:inline-flex;align-items:center;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);padding:6px 16px;border-radius:20px;margin-bottom:2rem">
+          <span style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase">Paso del mismo día · Sin pernoctación</span>
+        </div>
+      </div>
+      <div class="flor-grid">
+        <div class="flor-card"><div class="flor-time">09:39</div><div class="flor-title">Llegada a SMN</div><div class="flor-desc">Firenze Santa Maria Novella desde Venecia</div></div>
+        <div class="flor-card"><div class="flor-time">~10:00</div><div class="flor-title">Dejar maletas</div><div class="flor-desc">Consigna KiPoint u opción privada cercana a SMN</div></div>
+        <div class="flor-card"><div class="flor-time">10:00 – 19:30</div><div class="flor-title">Explorar la ciudad</div><div class="flor-desc">9–10 horas reales disponibles</div></div>
+        <div class="flor-card"><div class="flor-time">~19:30</div><div class="flor-title">Recoger maletas</div><div class="flor-desc">De vuelta en SMN. Objetivo: estar a las 20:00</div></div>
+        <div class="flor-card"><div class="flor-time">20:48</div><div class="flor-title">Tren a Roma</div><div class="flor-desc">Ref. 2242683 · Orden 9BK35293VD9954418 · Llega Termini 22:25</div></div>
+      </div>
+    </div>
+
+    <!-- ROMA -->
+    <div id="city-roma" class="city-panel">
+      <div class="city-layout">
+        <div>
+          <div class="city-name-big">Roma</div>
+          <div class="city-hotel-card">
+            <div class="hotel-label">Hotel · 4 noches</div>
+            <div class="hotel-name">Barberini Retreat Boutique</div>
+            <div class="hotel-addr">Via delle Quattro Fontane 171/172, Roma<br>2 habitaciones · Desayuno incluido</div>
+            <div class="hotel-dates">
+              <div><div class="date-label">Check-in</div><div class="date-val">16 sep</div></div>
+              <div><div class="date-label">Check-out</div><div class="date-val">20 sep 11:00</div></div>
+              <div><div class="date-label">Noches</div><div class="date-val">4</div></div>
+            </div>
+          </div>
+          <div class="alert-box">
+            <span class="alert-icon">🚕</span>
+            <span class="alert-text">Llegada nocturna con maletas: taxi oficial desde Termini. Aquí eficiencia gana sobre ahorro marginal. El metro puede esperar.</span>
+          </div>
+        </div>
+        <div>
+          <div class="city-right-label">Timing operativo</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16 sep 22:25</div><div class="tl-label">Llegada Termini</div><div class="tl-desc">Taxi oficial al hotel. Llegada estimada ~23:00</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17 – 19 sep</div><div class="tl-label">3 días completos</div><div class="tl-desc">10–12 horas útiles por día</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20 sep 05:45</div><div class="tl-label">Salir del hotel</div><div class="tl-desc">Hacia FCO. Check-out formal a las 11:00 pero vuelo muy temprano</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20 sep 06:30</div><div class="tl-label">En FCO</div><div class="tl-desc">Mínimo 2 horas antes. Vuelo W62340 sale a las 08:35</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUDAPEST -->
+    <div id="city-budapest" class="city-panel">
+      <div class="city-layout">
+        <div>
+          <div class="city-name-big">Budapest</div>
+          <div class="city-hotel-card" style="border-color:rgba(192,57,43,0.4)">
+            <div class="hotel-label" style="color:#f87171">Hotel · Pendiente</div>
+            <div class="hotel-name" style="color:rgba(255,255,255,0.35);font-style:italic">Por definir</div>
+            <div class="hotel-addr">En cuanto se confirme, el traslado del aeropuerto queda cerrado también.</div>
+            <div class="hotel-dates">
+              <div><div class="date-label">Check-in</div><div class="date-val" style="color:rgba(255,255,255,0.25)">—</div></div>
+            </div>
+          </div>
+          <div class="bud-opt">
+            <div class="bud-opt-name">Opción 1 — Bus 100E Airport Express</div>
+            <div class="bud-opt-desc">Muy buena relación costo-beneficio si el hotel queda céntrico</div>
+          </div>
+          <div class="bud-opt">
+            <div class="bud-opt-name">Opción 2 — Taxi / Bolt / Uber</div>
+            <div class="bud-opt-desc">Más simple con maletas o si el hotel no cae sobre corredor directo</div>
+          </div>
+        </div>
+        <div>
+          <div class="city-right-label">Timing de llegada</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20 sep 10:25</div><div class="tl-label">Llegada BUD</div><div class="tl-desc">Vuelo W62340 desde Roma FCO</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~11:00</div><div class="tl-label">Salida del aeropuerto</div><div class="tl-desc">Estimado tras migración y maletas</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:45 – 12:30</div><div class="tl-label">Llegada al hospedaje</div><div class="tl-desc">Según zona y medio de traslado elegido</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20 sep tarde</div><div class="tl-label">Tiempo útil</div><div class="tl-desc">6–8 horas reales disponibles</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── PENDIENTES ─── -->
+<div id="pendientes">
+  <div class="section">
+    <div class="section-label">Siguiente versión</div>
+    <h2 class="section-title">Pendientes</h2>
+    <div class="pending-section">
+      <div class="pending-item">
+        <div class="pending-num">01</div>
+        <div><div class="pending-name">Hotel Budapest</div><div class="pending-desc">Nombre, dirección, check-in / check-out y precio. En cuanto se defina, cierra también el traslado desde el aeropuerto.</div></div>
+      </div>
+      <div class="pending-item">
+        <div class="pending-num">02</div>
+        <div><div class="pending-name">Traslado definitivo BUD</div><div class="pending-desc">Bus 100E o taxi/Bolt. Se decide al confirmar la ubicación del hotel.</div></div>
+      </div>
+      <div class="pending-item">
+        <div class="pending-num">03</div>
+        <div><div class="pending-name">Segunda mitad del viaje</div><div class="pending-desc">Praga, Bélgica y Ámsterdam. Vuelos, hoteles y trenes aún sin confirmar.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Europa 2026 &nbsp;·&nbsp; Itinerario operativo premium &nbsp;·&nbsp; Versión corte 20 sep</footer>
+
+<script>
+  // Stars
+  const sf = document.getElementById('stars');
+  for (let i = 0; i < 140; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;animation-delay:${Math.random()*4}s`;
+    sf.appendChild(s);
+  }
+
+  // Nav scroll
+  function goTo(id, btn) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // City tabs
+  function showCity(id, btn) {
+    document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.city-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('city-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Active nav on scroll
+  const sections = ['reservas','ciudades','pendientes'];
+  window.addEventListener('scroll', () => {
+    let current = 'reservas';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    document.querySelectorAll('.nav-btn').forEach((b, i) => {
+      b.classList.toggle('active', sections[i] === current);
+    });
+  });
+</script>
+</body>
+</html>
