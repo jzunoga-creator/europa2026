@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -232,8 +233,8 @@
         <div class="tl-stop">
           <div class="tl-stop-icon">🇲🇽</div>
           <div class="tl-stop-dot mx"></div>
-          <div class="tl-stop-date">28 sep</div>
-          <div class="tl-stop-city" style="color:rgba(255,255,255,0.45)">Regreso MX</div>
+          <div class="tl-stop-date">28 sep 22:00</div>
+          <div class="tl-stop-city" style="color:rgba(255,255,255,0.45)">Regreso MX · AM26</div>
         </div>
 
       </div>
@@ -262,11 +263,13 @@
 
     <!-- PARIS -->
     <div id="city-paris" class="city-panel active">
-      <div class="city-layout">
+
+      <!-- Hotel + alerta CDG -->
+      <div class="city-layout" style="margin-bottom:3rem">
         <div>
           <div class="city-name-big">París</div>
           <div class="city-hotel-card">
-            <div class="hotel-label">Hotel</div>
+            <div class="hotel-label">Hotel · 2 noches</div>
             <div class="hotel-name">Hôtel Le Relais Saint Charles</div>
             <div class="hotel-addr">72 boulevard de Grenelle, 75015 Paris<br>Zona Dupleix · Metro línea 6</div>
             <div class="hotel-dates">
@@ -277,20 +280,132 @@
           </div>
           <div class="alert-box">
             <span class="alert-icon">💡</span>
-            <span class="alert-text">Aquí sí conviene transporte público: RER B + Metro L6 hasta Dupleix. Simple, eficiente y evita un taxi caro desde CDG.</span>
+            <span class="alert-text">Transporte público desde CDG: RER B hasta Châtelet (~35 min) + Metro L6 hasta Dupleix (~10 min). Total ~75 min puerta a puerta. Taxi: €60–80. No vale la pena.</span>
+          </div>
+          <div class="alert-box" style="margin-top:1rem">
+            <span class="alert-icon">🎟️</span>
+            <span class="alert-text"><strong style="color:var(--gold)">Reservas urgentes esta semana:</strong> Torre Eiffel (toureiffel.paris) · Sainte-Chapelle (sainte-chapelle.fr) · Louvre con franja horaria (louvre.fr) · Torres Notre-Dame (billetterie.notredamedeparis.fr). Se agotan semanas antes en septiembre.</span>
           </div>
         </div>
         <div>
           <div class="city-right-label">Timing operativo</div>
           <div class="timeline">
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep 12:10</div><div class="tl-label">Llegada CDG</div><div class="tl-desc">45–75 min para migración, maletas y salida del aeropuerto. Llegada estimada al hotel: 14:30–15:00</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep tarde</div><div class="tl-label">Primer día</div><div class="tl-desc">5–6 horas útiles después de dejar maletas</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13 sep</div><div class="tl-label">Día completo</div><div class="tl-desc">10–12 horas disponibles</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 17:30</div><div class="tl-label">Salir del hotel</div><div class="tl-desc">Inicio del trayecto hacia CDG</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 18:30</div><div class="tl-label">En CDG</div><div class="tl-desc">Mínimo 2 horas antes. Vuelo AF1326 sale a las 20:30</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep 12:10</div><div class="tl-label">Llegada CDG</div><div class="tl-desc">45–75 min para migración, maletas y transporte. Llegada estimada al hotel: 14:30–15:00</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12 sep tarde</div><div class="tl-label">Rive Gauche</div><div class="tl-desc">Invalides → Luxemburgo → Saint-Germain → cena. ~5 horas útiles</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13 sep</div><div class="tl-label">Gran día</div><div class="tl-desc">Sainte-Chapelle → Notre-Dame → Ópera → Galeries Lafayette → Bouillon Chartier → Louvre → Tuileries</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep mañana</div><div class="tl-label">Zona oeste</div><div class="tl-desc">Arco del Triunfo → Campos Elíseos → Trocadéro → Torre Eiffel. Maletas en hotel hasta las 17h</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 17:30</div><div class="tl-label">Salir al aeropuerto</div><div class="tl-desc">Metro L6 + RER B → CDG. Llegada ~18:20. Vuelo AF1326 a las 20:30</div></div>
           </div>
         </div>
       </div>
+
+      <!-- TABS DE DÍAS -->
+      <div style="margin-bottom:1rem">
+        <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem">Itinerario día a día</div>
+        <div style="display:flex;gap:0.75rem;margin-bottom:2rem;flex-wrap:wrap">
+          <button onclick="showParisDay('paris-d12',this)" class="paris-day-tab" style="padding:8px 20px;border:1px solid rgba(201,168,76,0.5);border-radius:20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;background:var(--gold);color:var(--navy);cursor:pointer;font-family:var(--font-body);font-weight:500">12 sep · Llegada</button>
+          <button onclick="showParisDay('paris-d13',this)" class="paris-day-tab" style="padding:8px 20px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;background:none;color:rgba(255,255,255,0.4);cursor:pointer;font-family:var(--font-body)">13 sep · Día completo</button>
+          <button onclick="showParisDay('paris-d14',this)" class="paris-day-tab" style="padding:8px 20px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;background:none;color:rgba(255,255,255,0.4);cursor:pointer;font-family:var(--font-body)">14 sep · Mañana + vuelo</button>
+        </div>
+      </div>
+
+      <!-- DÍA 12 -->
+      <div id="paris-d12" class="paris-day-panel">
+        <div style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:2rem;max-width:680px;line-height:1.7">~5 horas útiles · Todo caminable desde el hotel · Ruta lineal: <span style="color:rgba(255,255,255,0.6)">Invalides → Luxemburgo → Saint-Germain → cena</span>. Invalides primero por el cierre a las 18h.</div>
+        <div class="city-layout">
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:30 · A pie ~20 min</div><div class="tl-label">Les Invalides + Tumba de Napoleón</div><div class="tl-desc">⏱ 1h30 · El Dôme dorado brilla con sol de tarde. La tumba es de los monumentos más impresionantes de París. Tickets en taquilla (~€17) — sin reserva previa. <span style="color:#f87171">⚠ Cierra a las 18h.</span> Con llegada al hotel ~15:00 y ~20 min a pie, entrada real ~15:30 — quedan aprox. 2h30 antes del cierre. Si la llegada se retrasa más de lo previsto, se omite y se va directo a Luxemburgo.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:15 · A pie ~18 min por Rue de Varenne</div><div class="tl-label">Jardin du Luxembourg</div><div class="tl-desc">⏱ 45 min · Luz de tarde perfecta. Entra por Rue de Médicis para ver la Fontaine Médicis. Sillas de hierro, fuentes, ritmo parisino puro. Gratis.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:15 · A pie ~8 min</div><div class="tl-label">Saint-Germain-des-Prés</div><div class="tl-desc">⏱ 40 min · Iglesia más antigua de París (siglo VI). Boulevard animado al anochecer. Café de Flore y Les Deux Magots a 2 min — tomar un café en terraza al menos una vez vale la experiencia.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">19:00</div><div class="tl-label">🌙 Cena — Zona Saint-Germain / Odéon</div><div class="tl-desc">Bouillon Racine (brasserie Belle Époque, ~€25–30) · Allard (bistro histórico desde 1931, ~€22–28) · L'Avant Comptoir de la Mer (tapas marinas informales, ~€18–22)</div></div>
+          </div>
+          <div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-left:2px solid var(--gold);padding:1.5rem;border-radius:4px;margin-bottom:1rem">
+              <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Resumen del día</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8">
+                Llegada ~15:00h<br>
+                Invalides: tickets en taquilla (~€17) · cierra 18h · visita opcional según hora de llegada<br>
+                Todo caminable, sin metro<br>
+                Perfecto para bajar el jet lag<br>
+                Cena a 5 min del Jardín de Luxemburgo
+              </div>
+            </div>
+            <div class="alert-box">
+              <span class="alert-icon">💡</span>
+              <span class="alert-text">Invalides es opcional — se decide en el momento según la hora de llegada. Si no da tiempo, se va directo a Luxemburgo. Saint-Germain y la cena son las paradas irremplazables del día.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DÍA 13 -->
+      <div id="paris-d13" class="paris-day-panel" style="display:none">
+        <div style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:2rem;max-width:680px;line-height:1.7">~10 horas · Île de la Cité → Ópera → Louvre · <span style="color:rgba(255,255,255,0.6)">Todos los tickets reservados la noche anterior</span>. Ruta sin backtracking: este a oeste.</div>
+        <div class="city-layout">
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:00 · M4 Cité (~25 min)</div><div class="tl-label">Sainte-Chapelle</div><div class="tl-desc">⏱ 45 min · Llega a las 9h en punto: sin cola, luz matutina perfecta para las vidrieras góticas. 15m de vidrieras de piso a techo — una de las experiencias visuales más impactantes de Europa. <span style="color:#4ade80">✓ Tickets comprados · 4 personas · €22 c/u · N° 759304459421381 · Pagó Alan</span></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:00 · A pie 3 min · misma isla</div><div class="tl-label">Notre-Dame</div><div class="tl-desc">⏱ 1h · Reabrió dic 2024 completamente restaurada. Nave gratis. Torres €16 — reservar con semanas de anticipación. Rodea el exterior por el ábside para las mejores vistas.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:15 · M4→M8/9 hasta Opéra (~20 min)</div><div class="tl-label">Ópera Garnier — interior</div><div class="tl-desc">⏱ 45 min · Escalinata de mármol bicolor, Gran Foyer dorado, techo de Chagall. Uno de los interiores más lujosos del mundo. Entrada ~€15, sin reserva previa.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:05 · A pie 5 min por Bd Haussmann</div><div class="tl-label">Galeries Lafayette — terraza gratis</div><div class="tl-desc">⏱ 25 min · Cúpula art nouveau interior impresionante. Terraza de 360° en el techo completamente gratis — ves la Ópera, el Sacré-Cœur y los tejados haussmanianos.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:35 · A pie 5 min</div><div class="tl-label">🍽️ Almuerzo — Bouillon Chartier Grands Boulevards</div><div class="tl-desc">7 Rue du Faubourg Montmartre · Llegar antes de las 13h. Monumento histórico de 1896, décor Belle Époque, menú ~€18–22. Sin reservas, menú en francés — tradúcelo antes.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:00 · M9 → Palais Royal (~10 min)</div><div class="tl-label">Louvre</div><div class="tl-desc">⏱ 2h30 · Entra por Carrousel du Louvre. Ala Denon: Winged Victory → Mona Lisa → Venus de Milo. Reserva franja horaria en louvre.fr (~€22). Sábado 13 sep: abre 9h–18h.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:30 · Salida directa del Louvre</div><div class="tl-label">Jardín de las Tullerías</div><div class="tl-desc">⏱ 30 min · Paseo desde el Louvre hasta Place de la Concorde. El camino más bonito para salir del museo. Gratis.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:15</div><div class="tl-label">🌙 Cena — Zona Louvre / Palais-Royal</div><div class="tl-desc">Café Marly (terraza con vista a la Pirámide, ~€28–35) · Loulou (mediterráneo, jardín interior, ~€22–30) · Le Fumoir (brasserie con biblioteca, ~€20–28)</div></div>
+          </div>
+          <div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-left:2px solid var(--gold);padding:1.5rem;border-radius:4px;margin-bottom:1rem">
+              <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Resumen del día</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8">
+                Sainte-Chapelle a las 9h: clave<br>
+                Notre-Dame a pie desde SC: 3 min<br>
+                Ópera + Galeries: zona norte ~1h total<br>
+                Bouillon Chartier: almuerzo económico<br>
+                Louvre: 2h30 es suficiente para lo esencial<br>
+                Regreso hotel: M1 Palais Royal → M6 Dupleix
+              </div>
+            </div>
+            <div class="alert-box danger">
+              <span class="alert-icon">⚠️</span>
+              <span class="alert-text">El Louvre cierra los martes. El 13 sep es sábado — sin problema. Sainte-Chapelle sin reserva puede tener 45 min de cola. Bouillon Chartier sin reservas — llegar antes de las 13h es clave.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DÍA 14 -->
+      <div id="paris-d14" class="paris-day-panel" style="display:none">
+        <div style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:2rem;max-width:680px;line-height:1.7">~8 horas útiles · Desayuno en el hotel, maletas en recepción · <span style="color:rgba(255,255,255,0.6)">Ruta lineal: Arco → Campos caminando → Trocadéro → Torre Eiffel → hotel</span>. El 14 sep es domingo: Arco del Triunfo gratis el primer domingo del mes.</div>
+        <div class="city-layout">
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">08:00</div><div class="tl-label">🥐 Desayuno en el hotel</div><div class="tl-desc">Sin prisa. Deja maletas en recepción (confirma la noche anterior). Sale a las 9:00h.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:15 · M6 Dupleix → Charles de Gaulle–Étoile</div><div class="tl-label">Arco del Triunfo — exterior</div><div class="tl-desc">⏱ 25 min · Solo exterior. Rodea el monumento para ver los relieves — la Marsellesa de Rude es el más impresionante. Por la mañana de domingo hay muy poca gente. Primer domingo del mes = gratis.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">09:45 · Caminando por los Campos (~30 min)</div><div class="tl-label">Campos Elíseos</div><div class="tl-desc">⏱ 35 min caminando · De arriba (Arco) hacia abajo (Place de la Concorde). Domingo por la mañana es el mejor momento — poca gente, la avenida casi para ti solo.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:30 · M1 Concorde → M9 Trocadéro (~10 min)</div><div class="tl-label">Trocadéro — la foto icónica</div><div class="tl-desc">⏱ 30 min · La mejor vista frontal de la Torre Eiffel. A las 10:30h de domingo todavía hay poca gente. Las fuentes, las escalinatas y la Torre al fondo.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:15 · A pie ~10 min</div><div class="tl-label">🍽️ Almuerzo — Zona Torre Eiffel</div><div class="tl-desc">Au Bon Accueil (vista a la Torre, ~€25–32, reserva recomendada) · Bistrot Belhara (cocina vasca-francesa, ~€22–28) · Café du Marché (brasserie de barrio, ~€15–20, sin reserva)</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:30 · A pie desde Trocadéro</div><div class="tl-label">Torre Eiffel</div><div class="tl-desc">⏱ 1h30–2h · 2.º piso ~€18 o cima ~€35 si tienes reserva en toureiffel.paris. Sin reserva: el paseo alrededor de la base y el Champ de Mars ya valen la visita. Cuidado con carteristas en la zona.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:30 · M6 Bir-Hakeim → Dupleix (1 parada)</div><div class="tl-label">Regreso al hotel · Recoge maletas</div><div class="tl-desc">~3 horas de margen antes de salir. Descansa, toma un café cerca. Sin ninguna prisa.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:30 · M6 → Châtelet + RER B → CDG</div><div class="tl-label">Sale hacia CDG</div><div class="tl-desc">Llegada a CDG ~18:20h. 2h10 antes del vuelo AF1326 (20:30h). Holgura suficiente para facturación y seguridad.</div></div>
+          </div>
+          <div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-left:2px solid var(--gold);padding:1.5rem;border-radius:4px;margin-bottom:1rem">
+              <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Resumen del día</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8">
+                Sale 9:00h · maletas en hotel<br>
+                Arco + Campos: ~1h total<br>
+                Trocadéro: foto icónica a las 10:30h<br>
+                Torre Eiffel: cierre perfecto del viaje<br>
+                Regreso hotel 14:30h · 3h de margen<br>
+                Sale CDG 17:30h · vuelo 20:30h
+              </div>
+            </div>
+            <div class="alert-box">
+              <span class="alert-icon">💡</span>
+              <span class="alert-text">El 14 sep es domingo y primer domingo del mes — el Arco del Triunfo es gratis. Domingo por la mañana es el mejor momento para los Campos Elíseos: sin tráfico, sin aglomeraciones.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- VENECIA -->
@@ -318,7 +433,9 @@
           <div class="timeline">
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep 22:10</div><div class="tl-label">Llegada VCE</div><div class="tl-desc">Salida real del aeropuerto: 22:40–23:00. Bus ATVO a Piazzale Roma + caminata al hotel</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14 sep</div><div class="tl-label">Tiempo útil</div><div class="tl-desc">Prácticamente nulo — día de llegada nocturna</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15 sep</div><div class="tl-label">Día completo</div><div class="tl-desc">10–12 horas reales para la ciudad</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15 sep 08:30</div><div class="tl-label">⛪ Basílica de San Marco</div><div class="tl-desc">Piazza San Marco · Entrada gratis a la basílica · Llegar temprano para evitar filas — es uno de los sitios más visitados de Europa. El mosaico dorado del interior es impresionante con luz de mañana.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15 sep 10:00</div><div class="tl-label">🏛️ Palazzo Ducale (Doge's Palace)</div><div class="tl-desc">Piazzetta San Marco · A pasos de la Basílica. Reservar ticket con anticipación — museo.venezia.it (~€30). Sala del Gran Consejo y el Puente de los Suspiros son lo más destacado. ~2 horas.</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15 sep mediodía en adelante</div><div class="tl-label">✨ Resto del día libre</div><div class="tl-desc">Exploración espontánea — canales, callejones, mercado de Rialto, aperitivo veneciano (Spritz en campo Santa Margherita).</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16 sep 06:30</div><div class="tl-label">Salir del hotel</div><div class="tl-desc">Hacia Venezia Santa Lucia. Objetivo: estar en estación a las 06:45</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16 sep 07:26</div><div class="tl-label">Tren a Florencia</div><div class="tl-desc">Ref. 2242668 · Llega Firenze SMN 09:39</div></div>
           </div>
@@ -335,11 +452,18 @@
         </div>
       </div>
       <div class="flor-grid">
-        <div class="flor-card"><div class="flor-time">09:39</div><div class="flor-title">Llegada a SMN</div><div class="flor-desc">Firenze Santa Maria Novella desde Venecia</div></div>
-        <div class="flor-card"><div class="flor-time">~10:00</div><div class="flor-title">Dejar maletas</div><div class="flor-desc">Consigna KiPoint u opción privada cercana a SMN</div></div>
-        <div class="flor-card"><div class="flor-time">10:00 – 19:30</div><div class="flor-title">Explorar la ciudad</div><div class="flor-desc">9–10 horas reales disponibles</div></div>
-        <div class="flor-card"><div class="flor-time">~19:30</div><div class="flor-title">Recoger maletas</div><div class="flor-desc">De vuelta en SMN. Objetivo: estar a las 20:00</div></div>
-        <div class="flor-card"><div class="flor-time">20:48</div><div class="flor-title">Tren a Roma</div><div class="flor-desc">Ref. 2242683 · Orden 9BK35293VD9954418 · Llega Termini 22:25</div></div>
+        <div class="flor-card"><div class="flor-time">09:39</div><div class="flor-title">🚄 Llegada a SMN</div><div class="flor-desc">Firenze Santa Maria Novella desde Venecia</div></div>
+        <div class="flor-card"><div class="flor-time">~10:00</div><div class="flor-title">🧳 Dejar maletas</div><div class="flor-desc">Consigna KiPoint u opción privada cercana a SMN</div></div>
+        <div class="flor-card"><div class="flor-time">10:00 – 10:45</div><div class="flor-title">⛪ Duomo y Battistero</div><div class="flor-desc">Piazza del Duomo · Admira la fachada de mármol y las Puertas del Paraíso de Ghiberti (gratis desde la plaza). El interior de la catedral abre a las 10:15.</div></div>
+        <div class="flor-card"><div class="flor-time">10:45 · caminata 8 min</div><div class="flor-title">🚶 Hacia la Accademia</div><div class="flor-desc">Camino directo desde el Duomo</div></div>
+        <div class="flor-card" style="border-left-color:#4ade80"><div class="flor-time">11:00 – 12:30</div><div class="flor-title">🎨 David · Galleria dell'Accademia</div><div class="flor-desc">Tu cita reservada · Llega 10–15 min antes con ID y tickets · No te pierdas los Prigioni inacabados de Miguel Ángel y la planta alta · Pagó Jorge</div></div>
+        <div class="flor-card"><div class="flor-time">12:45 – 14:00</div><div class="flor-title">🍽️ Almuerzo · Trattoria Dall'Oste</div><div class="flor-desc">Bistecca alla fiorentina · De camino al centro</div></div>
+        <div class="flor-card"><div class="flor-time">14:00 – 15:00</div><div class="flor-title">🏛️ Piazza della Signoria y Palazzo Vecchio</div><div class="flor-desc">Esculturas al aire libre · Loggia dei Lanzi · Réplica del David · Fuente de Neptuno · Todo gratis</div></div>
+        <div class="flor-card"><div class="flor-time">15:00 – 15:30</div><div class="flor-title">🍦 Gelato · Gelateria dei Neri</div><div class="flor-desc">⚠ Cierra los martes · Confirmar día de la semana</div></div>
+        <div class="flor-card"><div class="flor-time">15:30 – 17:30</div><div class="flor-title">🖼️ Uffizi (opcional)</div><div class="flor-desc">Con este horario sí hay tiempo para verlos a fondo: Botticelli, Da Vinci · Ticket aparte · Si no quieres más museo, sáltalo y pasea por el Oltrarno</div></div>
+        <div class="flor-card"><div class="flor-time">17:30 – 18:00</div><div class="flor-title">🌉 Ponte Vecchio</div><div class="flor-desc">Cruza el Arno y mira el corredor vasariano sobre las joyerías</div></div>
+        <div class="flor-card"><div class="flor-time">~19:30</div><div class="flor-title">🧳 Recoger maletas</div><div class="flor-desc">De vuelta en SMN · Objetivo: estar a las 20:00</div></div>
+        <div class="flor-card"><div class="flor-time">20:48</div><div class="flor-title">🚄 Tren a Roma</div><div class="flor-desc">Ref. 2242683 · Orden 9BK35293VD9954418 · Llega Termini 22:25</div></div>
       </div>
     </div>
 
@@ -402,6 +526,8 @@
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~11:00</div><div class="tl-label">Salida del aeropuerto</div><div class="tl-desc">Estimado tras migración y maletas</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:45 – 12:30</div><div class="tl-label">Llegada al hospedaje</div><div class="tl-desc">Según zona y medio de traslado elegido</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20 sep tarde</div><div class="tl-label">Tiempo útil</div><div class="tl-desc">6–8 horas reales disponibles</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">22 sep 13:00</div><div class="tl-label">🏛️ Parlamento Húngaro · Los 4</div><div class="tl-desc">Kossuth tér 1-3, Budapest 1055 · Audioguide · Purchase ID: WPMDSXVZ3HMK · ⚠️ Ticket impreso obligatorio</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">22 sep 19:30</div><div class="tl-label">🚄 Tren nocturno a Praga</div><div class="tl-desc">Budapest-Nyugati → Praha hl.n. · EN10476 · Llega 23 sep 08:23</div></div>
           </div>
         </div>
       </div>
@@ -490,14 +616,22 @@
             <span class="alert-icon">🚉</span>
             <span class="alert-text">El hotel queda a pasos de Amsterdam Centraal — ubicación perfecta para llegar directo desde el tren sin complicaciones.</span>
           </div>
+          <div class="alert-box" style="margin-top:1rem">
+            <span class="alert-icon">🎨</span>
+            <span class="alert-text">Ruth y Jorge: Museo Van Gogh el 28 sep a las 09:00. Museumplein 6, 1071 DJ Ámsterdam · Ref. 1178660370 · Audio Guide incluido · Ticket digital, no imprimir.</span>
+          </div>
         </div>
         <div>
           <div class="city-right-label">Timing operativo</div>
           <div class="timeline">
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">26 sep 10:57</div><div class="tl-label">Sale tren desde Bruselas</div><div class="tl-desc">Bruxelles-Midi · Eurocity Direct 9539 · DNR CDFPWLJ</div></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">26 sep tarde</div><div class="tl-label">Llegada Ámsterdam</div><div class="tl-desc">Amsterdam Zuid → caminata o metro corto al hotel</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">26–27 sep</div><div class="tl-label">Tiempo útil</div><div class="tl-desc">2 días completos para explorar la ciudad</div></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep 12:00</div><div class="tl-label">Check-out · Fin del viaje</div><div class="tl-desc">Último día del itinerario Europa 2026</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">27 sep</div><div class="tl-label">Día completo</div><div class="tl-desc">10–12 horas para explorar la ciudad</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep 09:00</div><div class="tl-label">🎨 Van Gogh Museum · Ruth y Jorge</div><div class="tl-desc">Museumplein 6 · Audio Guide · Hasta las 18:00 (entrar a las 9:00)</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep 11:30</div><div class="tl-label">🏛️ Rijksmuseum · Los 4</div><div class="tl-desc">Museumstraat 1 · 4 adultos · Ref. UBH550593 · Horario 09:00–17:00</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep 12:00</div><div class="tl-label">Check-out hotel</div><div class="tl-desc">Dejar maletas en consigna y aprovechar el resto del día</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep ~19:00</div><div class="tl-label">Salir hacia el aeropuerto</div><div class="tl-desc">Amsterdam Airport Schiphol · Mínimo 3 horas antes del vuelo</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">28 sep 22:00</div><div class="tl-label">✈️ Vuelo AM26 → México</div><div class="tl-desc">Regreso a casa · Fin de Europa 2026 🎉</div></div>
           </div>
         </div>
       </div>
@@ -621,141 +755,346 @@
   <div class="section">
     <div class="section-label">Gastos compartidos</div>
     <h2 class="section-title">Balance</h2>
-    <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:-2rem;margin-bottom:2.5rem">Toca cada tarjeta para ver el desglose completo</p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:-2rem;margin-bottom:2rem">Toca cada tarjeta para ver el desglose completo</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:3rem">
-
-      <!-- JONATHAN -->
-      <div onclick="toggleDetail('d-jonathan','arr-jonathan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jonathan</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr-jonathan">▼ detalle</div>
-        </div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$50,669</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$10,391 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-        <div id="d-jonathan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel Le Relais Saint Charles · París</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,022</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Barberini Retreat Boutique · Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$33,646</span></div>
-        </div>
-      </div>
-
-      <!-- RUTH -->
-      <div onclick="toggleDetail('d-ruth','arr-ruth')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Ruth</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr-ruth">▼ detalle</div>
-        </div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$55,731</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$15,453 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-        <div id="d-ruth" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Venice Maggior Consiglio · Venecia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,758</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Venecia → Florencia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,761</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Florencia → Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,390</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Roma → Budapest · W62340</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,172</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Airbnb Budapest · Hosted by Mimi</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,421</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476 (su boleto)</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,780</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel MOODs Charles Bridge · Praga</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,974</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Praga → Bruselas · SN2810</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$7,475</span></div>
-        </div>
-      </div>
-
-      <!-- ALAN -->
-      <div onclick="toggleDetail('d-alan','arr-alan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Alan</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr-alan">▼ detalle</div>
-        </div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$54,713</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#4ade80;font-weight:500">+$14,435 MXN</div>
-          <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
-        </div>
-        <div id="d-alan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo París → Venecia · AF1326</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,684</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476 (boleto Jonathan)</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,402</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Brussels off Grand'Place</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$15,177</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Bruselas → Ámsterdam · DNR CDFPWLJ</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,210</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Styles Amsterdam Central Station</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$24,240</span></div>
-        </div>
-      </div>
-
-      <!-- JORGE -->
-      <div onclick="toggleDetail('d-jorge','arr-jorge')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jorge</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr-jorge">▼ detalle</div>
-        </div>
-        <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$0</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
-        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
-          <div style="font-size:18px;color:#f87171;font-weight:500">−$40,278 MXN</div>
-          <div style="font-size:11px;color:rgba(248,113,113,0.6)">debe pagar</div>
-        </div>
-        <div id="d-jorge" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:10px;letter-spacing:2px;color:#f87171;text-transform:uppercase;margin-bottom:0.75rem">Transferencias pendientes</div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Jonathan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$10,391</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Ruth</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$15,453</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Alan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$14,435</span></div>
-        </div>
-      </div>
-
+    <!-- Balance tabs -->
+    <div style="display:flex;gap:0.75rem;margin-bottom:2.5rem">
+      <button onclick="switchBalance('b1',this)" id="btab-b1" style="padding:8px 20px;border-radius:20px;border:1px solid var(--gold);background:var(--gold);color:var(--navy);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body)">Corte 1 · ✓ Liquidado</button>
+      <button onclick="switchBalance('b2',this)" id="btab-b2" style="padding:8px 20px;border-radius:20px;border:1px solid rgba(248,113,113,0.4);background:none;color:#f87171;font-size:12px;cursor:pointer;font-family:var(--font-body)">Corte 2 · Pendiente</button>
     </div>
 
-    <!-- Resumen total -->
-    <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;border-radius:4px;display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:3rem">
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Total viaje</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$161,113 MXN</div></div>
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Por persona (parte igual)</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$40,278 MXN</div></div>
-      <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Viajeros</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">4</div></div>
-    </div>
+    <!-- BALANCE 1: Corte 1 - Liquidado -->
+    <div id="balance-b1">
+      <div style="background:rgba(30,126,82,0.1);border:1px solid rgba(74,222,128,0.2);padding:1rem 1.5rem;border-radius:4px;margin-bottom:2rem;max-width:600px">
+        <div style="font-size:12px;color:rgba(74,222,128,0.7);line-height:1.7">✓ Corte 1 liquidado — Jorge transfirió a Jonathan, Ruth y Alan. Todos quedaron flat.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:3rem">
 
-    <!-- Transferencias para quedar flat -->
-    <div style="margin-bottom:1rem">
-      <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem">Para quedar flat — solo Jorge paga</div>
-      <div style="display:grid;gap:0.75rem;max-width:600px">
+        <div onclick="toggleDetail('d1-jonathan','arr1-jonathan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jonathan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr1-jonathan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$47,913</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$8,324 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d1-jonathan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel Le Relais Saint Charles · París</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,022</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Barberini Retreat Boutique · Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$30,891</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d1-ruth','arr1-ruth')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Ruth</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr1-ruth">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$55,731</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$16,142 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d1-ruth" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Venice Maggior Consiglio · Venecia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,758</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Venecia → Florencia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,761</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Florencia → Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,390</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Roma → Budapest · W62340</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,172</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Airbnb Budapest · Hosted by Mimi</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,421</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,780</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel MOODs Charles Bridge · Praga</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,974</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Praga → Bruselas · SN2810</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$7,475</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d1-alan','arr1-alan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Alan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr1-alan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$54,713</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$15,124 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d1-alan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo París → Venecia · AF1326</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,684</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476 (Jonathan)</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,402</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Brussels off Grand'Place</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$15,177</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Bruselas → Ámsterdam · DNR CDFPWLJ</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,210</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Styles Amsterdam Central Station</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$24,240</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d1-jorge','arr1-jorge')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jorge</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr1-jorge">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$0</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#f87171;font-weight:500">−$39,589 MXN</div>
+            <div style="font-size:11px;color:rgba(248,113,113,0.6)">debe pagar</div>
+          </div>
+          <div id="d1-jorge" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:#f87171;text-transform:uppercase;margin-bottom:0.75rem">Transferencias pendientes</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Jonathan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$8,324</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Ruth</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$16,142</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Alan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$15,124</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;border-radius:4px;display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2rem">
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Total sin museos</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$158,357 MXN</div></div>
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Por persona</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$39,589 MXN</div></div>
+      </div>
+      <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem">Para quedar flat</div>
+      <div style="display:grid;gap:0.75rem;max-width:600px;margin-bottom:3rem">
         <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Jonathan</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$10,391 MXN</div>
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Jonathan</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$8,324 MXN</div>
         </div>
         <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$15,453 MXN</div>
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$16,142 MXN</div>
         </div>
         <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
-          <div style="font-size:20px">💸</div>
-          <div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Alan</span></div>
-          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$14,435 MXN</div>
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Alan</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$15,124 MXN</div>
         </div>
       </div>
     </div>
 
-    <div style="margin-top:2rem;background:rgba(255,255,255,0.02);border-left:2px solid rgba(201,168,76,0.4);padding:1rem 1.5rem;border-radius:0 4px 4px 0;max-width:600px">
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7">Viaje completo cerrado · 8 ciudades · 11–28 sep. Jorge es el único que debe transferir — $40,278 MXN en 3 pagos.</div>
+    <!-- BALANCE 2: Museos (nuevo desde cero) -->
+    <div id="balance-b2" style="display:none">
+
+      <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);padding:1rem 1.5rem;border-radius:4px;margin-bottom:2rem;max-width:600px">
+        <div style="font-size:12px;color:rgba(248,113,113,0.7);line-height:1.7">⚡ Balance activo — se irán sumando gastos conforme se realicen.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:3rem">
+
+        <div onclick="toggleDetail('d2-jonathan','arr2-jonathan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jonathan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-jonathan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$2,756</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$303 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-jonathan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Rijksmuseum · Ámsterdam · 4 tickets</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,756</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-ruth','arr2-ruth')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Ruth</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-ruth">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$3,386</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$933 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-ruth" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Parlamento Húngaro · Budapest · 4 tickets</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,386</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-alan','arr2-alan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Alan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-alan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$1,755</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#f87171;font-weight:500">−$698 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-alan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Sainte-Chapelle · París · 4 tickets · €22 c/u</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$1,755</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-jorge','arr2-jorge')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jorge</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-jorge">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$0</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#f87171;font-weight:500">−$1,974 MXN</div>
+            <div style="font-size:11px;color:rgba(248,113,113,0.6)">debe pagar</div>
+          </div>
+          <div id="d2-jorge" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:#f87171;text-transform:uppercase;margin-bottom:0.75rem">Transferencias pendientes</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Jonathan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$782</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Ruth</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$1,193</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;border-radius:4px;display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2rem">
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Total Corte 2</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$9,812 MXN</div></div>
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Por persona</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$2,453 MXN</div></div>
+      </div>
+
+      <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem">Para quedar flat</div>
+      <div style="display:grid;gap:0.75rem;max-width:600px;margin-bottom:3rem">
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Alan</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Jonathan</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$303 MXN</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Alan</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$395 MXN</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$538 MXN</div>
+        </div>
+      </div>
+
+    </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:3rem">
+
+        <div onclick="toggleDetail('d2-jonathan','arr2-jonathan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jonathan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-jonathan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$50,669</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$9,544 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-jonathan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel Le Relais Saint Charles · París</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,022</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Barberini Retreat Boutique · Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$33,646</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Rijksmuseum · Ámsterdam · 4 tickets</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,756</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-ruth','arr2-ruth')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Ruth</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-ruth">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$59,117</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$17,992 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-ruth" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Venice Maggior Consiglio · Venecia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$17,758</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Venecia → Florencia</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,761</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Florencia → Roma</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$2,390</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Roma → Budapest · W62340</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,172</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Airbnb Budapest · Hosted by Mimi</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,421</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,780</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel MOODs Charles Bridge · Praga</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$6,974</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo Praga → Bruselas · SN2810</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$7,475</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Parlamento Húngaro · Budapest · 4 tickets</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,386</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-alan','arr2-alan')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Alan</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-alan">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$54,713</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#4ade80;font-weight:500">+$13,588 MXN</div>
+            <div style="font-size:11px;color:rgba(74,222,128,0.6)">le deben</div>
+          </div>
+          <div id="d2-alan" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem">Desglose</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Vuelo París → Venecia · AF1326</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$8,684</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Budapest → Praga · EN10476 (Jonathan)</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,402</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Brussels off Grand'Place</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$15,177</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Tren Bruselas → Ámsterdam · DNR CDFPWLJ</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$3,210</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">Hotel ibis Styles Amsterdam Central Station</span><span style="font-size:12px;color:#fff;white-space:nowrap;margin-left:8px">$24,240</span></div>
+          </div>
+        </div>
+
+        <div onclick="toggleDetail('d2-jorge','arr2-jorge')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(248,113,113,0.3);padding:1.75rem;border-radius:4px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between"><div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem">Jorge</div><div style="font-size:11px;color:rgba(255,255,255,0.25)" id="arr2-jorge">▼ detalle</div></div>
+          <div style="font-family:var(--font-display);font-size:32px;color:#fff;margin-bottom:4px">$0</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem">pagado</div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:4px">Balance</div>
+            <div style="font-size:18px;color:#f87171;font-weight:500">−$41,125 MXN</div>
+            <div style="font-size:11px;color:rgba(248,113,113,0.6)">debe pagar</div>
+          </div>
+          <div id="d2-jorge" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:10px;letter-spacing:2px;color:#f87171;text-transform:uppercase;margin-bottom:0.75rem">Transferencias pendientes</div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Jonathan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$9,544</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Ruth</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$17,992</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12px;color:rgba(255,255,255,0.5)">→ Alan</span><span style="font-size:12px;color:#f87171;white-space:nowrap;margin-left:8px">$13,588</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;border-radius:4px;display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2rem">
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Total con museos</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$164,499 MXN</div></div>
+        <div><div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px">Por persona</div><div style="font-family:var(--font-display);font-size:24px;color:var(--gold)">$41,125 MXN</div></div>
+      </div>
+      <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem">Para quedar flat</div>
+      <div style="display:grid;gap:0.75rem;max-width:600px;margin-bottom:3rem">
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Jonathan</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$9,544 MXN</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Ruth</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$17,992 MXN</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.25rem 1.5rem;border-radius:4px">
+          <div style="font-size:20px">💸</div><div style="flex:1"><span style="color:#f87171;font-weight:500">Jorge</span><span style="color:rgba(255,255,255,0.3);margin:0 8px">→</span><span style="color:#4ade80;font-weight:500">Alan</span></div>
+          <div style="font-family:var(--font-display);font-size:18px;color:#fff">$13,588 MXN</div>
+        </div>
+      </div>
     </div>
 
   </div>
 </div>
 
-<footer>Europa 2026 &nbsp;·&nbsp; Itinerario operativo premium &nbsp;·&nbsp; Versión corte 20 sep</footer>
+<footer>Europa 2026 &nbsp;·&nbsp; Itinerario operativo premium &nbsp;·&nbsp; 11–28 septiembre 2026</footer>
 
 <script>
+  // Switch balance tabs
+  function switchBalance(id, btn) {
+    document.querySelectorAll('[id^="balance-b"]').forEach(el => el.style.display = 'none');
+    document.getElementById('balance-' + id).style.display = 'block';
+    document.querySelectorAll('[id^="btab-"]').forEach(b => {
+      b.style.background = 'none';
+      b.style.color = 'rgba(255,255,255,0.4)';
+      b.style.borderColor = 'rgba(255,255,255,0.15)';
+    });
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--navy)';
+    btn.style.borderColor = 'var(--gold)';
+  }
+
+  // Paris day tabs
+  function showParisDay(id, btn) {
+    document.querySelectorAll('.paris-day-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.paris-day-tab').forEach(b => {
+      b.style.background = 'none';
+      b.style.color = 'rgba(255,255,255,0.4)';
+      b.style.borderColor = 'rgba(255,255,255,0.1)';
+    });
+    document.getElementById(id).style.display = 'block';
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--navy)';
+    btn.style.borderColor = 'var(--gold)';
+  }
+
+
   // Toggle balance detail
   function toggleDetail(id, arrId) {
     const el = document.getElementById(id);
